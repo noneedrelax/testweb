@@ -7,11 +7,11 @@ env:
   - SHA=$(git rev-parse HEAD)
   # prevent the warning prompt from gcloud cli
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+cache:
+ directories:
+  - $HOME/.m2
+     
 before_install:
- - pwd
- - ls -l ./
- - chmod +rx ./*.sh
- - mkdir -p ./upload/
  # decrype the account key file
  - openssl aes-256-cbc -K $encrypted_33c2a12ca10a_key -iv $encrypted_33c2a12ca10a_iv -in service-account.json.enc -out ./service-account.json -d
  - curl https://sdk.cloud.google.com | bash > /dev/null;
@@ -34,4 +34,4 @@ script: mvn -Drepo.username=${REPO_USERNAME} -Drepo.password=${REPO_PASSWORD} -D
 deploy:
  # use the custom script to deploy
  provider: script
- script: ./docker_push.sh && ./deploy_k8s.sh
+ script: pwd && ls -lR ./ && ./docker_push.sh && ./deploy_k8s.sh
