@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.idfconnect.ssorest.plugin:ssorest-plugin-filter-annotated:3.0.25-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/idfconnect/ssorest/plugin/ssorest-plugin-filter-annotated/3.0.25-SNAPSHOT/ssorest-plugin-filter-annotated-3.0.25-20190724.201538-4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/idfconnect/ssorest/plugin/ssorest-plugin-filter-annotated/3.0.25-SNAPSHOT/ssorest-plugin-filter-annotated-3.0.25-20190724.201538-4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/idfconnect/ssorest/plugin/ssorest-plugin-filter-annotated/3.0.25-SNAPSHOT/ssorest-plugin-filter-annotated-3.0.25-20190724.201538-4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

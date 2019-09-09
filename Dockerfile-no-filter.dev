@@ -1,0 +1,7 @@
+# Start writing your Dockerfile easily
+FROM tomcat:9.0.24-jdk8-corretto
+
+WORKDIR '/app'
+
+COPY ./target/testweb-nofilter.war ./testweb.war
+COPY ./conf/testweb.xml /usr/local/tomcat/conf/Catalina/localhost/testweb.xml

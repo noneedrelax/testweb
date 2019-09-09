@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+//------------------------------------
+//    GLOBAL ELEMENTS
+//------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    user-select: text;
+    font-weight: normal;
+    padding: $std-padding6 0 $std-padding2 0;
+    line-height: $lineHeightText;
+
+    > .sub-title {
+        display: block;
+        font-size: $std-padding2;
+    }
+
+    & div {
+        user-select: text;
+    }
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+h4 {
+    font-size: 14px;
+}
+
+h1 + h2, h2 + h3, h3 + h4,
+h1 + p, h2 + p, h3 + p, h4 + p {
+    padding-top: 0;
+}
+
+p {
+    padding-top: $std-padding4;
+}
+
+p.no-padding-top {
+    padding-top: 0;
+}
+
+p, p a, p div, li, input, .text {
+    line-height: $lineHeightText;
+    text-align: left;
+    user-select: text;
+}
+
+li {
+    padding-top: $std-padding;
+}
+
+h3 + h4, h3 + p, h4 + p {
+    padding-top: 0;
+}
+
+a {
+    //color: $brand;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:active,
+    &:hover {
+        color: lighten($brand, 5%);
+    }
+}
+
+a.nochange {
+    color: inherit;
+    text-decoration: inherit;
+
+    &:active,
+    &:hover {
+        color: lighten($brand, 5%);
+    }
+}
+
+a.nochange-nohover {
+    color: inherit;
+    text-decoration: inherit;
+
+    &:active,
+    &:hover {
+        color: inherit;
+    }
+}
+
+
+@media #{$device-wide-extra} {
+    html {
+        font-size: $fontSize + 2;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 19px;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+}
+
+.right {
+    float: right;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}

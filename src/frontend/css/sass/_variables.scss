@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+$min-width: 320px;
+$max-width: 1200px;
+
+// std
+$std-padding:  0.25rem;
+$std-padding2: 0.50rem;
+$std-padding3: 0.75rem;
+$std-padding4: 1.00rem;
+$std-padding5: 1.25rem;
+$std-padding6: 1.50rem;
+$std-padding7: 1.75rem;
+$std-padding8: 2.00rem;
+$std-tab-radius: 4px;
+$std-shadow: 0 5px 10px rgba(0, 0, 0, .22);
+$std-shadow2: 0 1px 4px rgba(41, 51, 57, .5);
+
+// font settings
+$fontSize: 14px;
+$fontSizeSmall: 12px;
+$lineHeightText: 1.62;
+$lineHeightMinVis: 1.2;// Minimal line-height for input etc..
+
+// Used colors
+$black: #000000;
+$fb-color: #486fbb;
+$blue: #1B809D;
+$blue-light: #1998ff;
+$blue-light2: #3eacff;
+$blue-dark: #185263;
+$brand: #5b5bb4;
+$green: #1BBA4B;
+$green-light: #1ad551;
+$green-bg: #d5f6d8;
+$green-bg2: #ebffec;
+$green-bg3: #f5fff5;
+$red: #A81700;
+$red-scarlet: #fc4324;
+$red-scarlet-dark: #da381d;
+$orange: #FC9124;
+$orange-light: #fbefe4;
+$gold: #D66E04;
+$yellow: #fff6c3;
+$white: #ffffff;
+$el-color: #39434e;
+$gray-light3: #f7f7f7;
+$gray-light6: #f1f1f1;
+$gray-light: #eeeeee;
+$gray-light5: #e6e6e6;
+$gray-light2: #dddddd;
+$gray-light4: #cccccc;
+$gray-middle: #b7b7b7;
+$gray-dark7: #a0a0a0;
+$gray-dark6: #929292;
+$gray-dark2: #888888;
+$gray-dark: #7b7b7b;
+$gray-dark5: #656565;
+$gray-dark3: #4c4c4c;
+$gray-dark9: #444444;
+$gray-dark4: #3c3c3c;
+$gray-dark10: #333333;
+$gray-dark8: #262626;
+$selected-green: #f2fbea;
+
+$background: $white;
+$txt-color: $gray-dark3;
+$txt-color-light: $gray-dark6;
+$txt-color-inverted: $gray-light3;
+$std-table-background: $gray-light;
+$std-table-border: $gray-light4;
+$std-table-border-selected: $gray-dark7;
+$std-table-border-dark: $gray-dark;
+$disabled: $gray-dark7;
+$red-selected: $red-scarlet;
+$radio-button-active-bg: $blue;
+$radio-button-active-fg: $gray-light3;
+$mobile-header-bg: $gray-light3;
+$section-header-bg: $gray-dark;
+
+//------------------------------------
+//    MEDIA QUERIES
+//------------------------------------
+
+// base
+$device-smallest: "only screen and (max-width: 399px)";
+$device-smallest-iphone6pl: "only screen and (max-width: 414px)";
+$device-smallest2: "only screen and (max-width: 479px)";
+$device-not-smallest2: "only screen and (min-width: 480px)";
+$device-not-smallest: "only screen and (min-width: 400px)";
+$device-small: "only screen and (max-width: 767px)";
+$device-not-small: "only screen and (min-width: 768px)";
+$device-wide: "only screen and (min-width: 768px)";
+$device-wide-only: "only screen and (min-width: 768px) and (max-width: 1023px)";
+$device-wide-exclude: "only screen and (max-width: 767px), (min-width: 1024px)";
+$device-wide-h: "only screen and (min-height: 768px)";
+$device-wide-extra: "only screen and (min-width: 1024px)";
+$device-not-wide-extra: "only screen and (max-width: 1023px)";
+$device-wide-extra2: "only screen and (min-width: 1200px)";
+$device-with-sidebar: "only screen and (min-width: 580px)";// Show left sidebar from this width
+$device-with-sidebar-not-wide: "only screen and (min-width: 580px) and (max-width: 767px)";
+$device-smallest-not-wide: "only screen and (min-width: 400px) and (max-width: 767px)";
+$device-without-sidebar: "only screen and (max-width: 579px)";// Show left sidebar till this width
+$device-low: "only screen and (max-height: 400px)";
+$device-low2: "only screen and (min-height: 600px)";
+$device-tall: "only screen and (min-height: 800px)";
+$stick-header: "only screen and (min-height: 400px)"; // Stick header for these devices
+
+// imgs
+$arrow-img: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="404" height="404"><path d="M0,101.08h404.308L202.151,303.229L0,101.08z"/></svg>';

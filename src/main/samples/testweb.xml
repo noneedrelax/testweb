@@ -1,0 +1,4 @@
+<Context path="/testweb" docBase="D:/IDFC/Apps/testweb-3.0.2-SNAPSHOT.war" unpackWAR="true">
+   <Parameter name="com.idfconnect.ssorest.plugin.filter.SSORestServletFilterPlugin.useFileConfigProvider" value="true" override="false"/>
+   <Parameter name="com.idfconnect.ssorest.plugin.filter.SSORestServletFilterPlugin.configFileName" value="D:/IDFC/SSORestPlugin/conf/filter.properties" override="false"/>
+</Context>

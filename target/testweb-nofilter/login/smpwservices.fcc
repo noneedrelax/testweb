@@ -1,0 +1,871 @@
+﻿<!-- SiteMinder Encoding=UTF-8; -->
+@username=%USERNAME%
+@smretries=0
+@smpasswordfcc=1
+
+<!-- Please set @smpwselfchange=1 to allow SecureURL enabled user initiated password change  -->
+@smpwselfchange=0
+
+<!-- Don't change the lines above -->
+
+<HTML>
+
+<HEAD>
+    <META http-equiv='Content-Type' content='text/html;charset=$$SMENC$$'>
+    <TITLE>SiteMinder Password Services</TITLE>
+
+<!-- Cross-frame scripting prevention: This code will prevent this page from being encapsulated within HTML frames. Remove, or comment out, this code if the functionality that is contained in this SiteMinder page is to be included within HTML frames. -->
+<STYLE> 
+   html {
+      display : none ;
+      visibility : hidden; 
+   } </STYLE>
+<SCRIPT>
+   if( self == top ) {
+       document.documentElement.style.display = 'block' ; 
+       document.documentElement.style.visibility = 'visible' ; 
+   } else {
+       top.location = self.location ; 
+   }
+</SCRIPT>
+
+
+<SCRIPT language='JavaScript'>
+
+function searchKeyPress(e)
+{
+	// look for window.event in case event isn't passed in
+	if (typeof e == 'undefined' && window.event) { e = window.event; }
+	if (e.which || e.keyCode)
+	{
+		if ((e.which == 13) || (e.keyCode ==13))
+		{
+			document.getElementById('Enter').click();			
+		}
+	}		
+}
+
+
+function resetCredFields()
+{
+    
+    if ($$smauthreason$$ == 0 || $$smauthreason$$ == 4 || $$smauthreason$$ == 5 || $$smauthreason$$ == 28 || $$smauthreason$$ == 30 )
+    {
+        document.PWChange.PASSWORD.value = '';
+    }
+    else if ($$smauthreason$$ == 1 || $$smauthreason$$ == 18 || $$smauthreason$$ == 20 || $$smauthreason$$ == 22 || $$smauthreason$$ == 31 || $$smauthreason$$ == 34)
+    {
+        document.PWChange.NEWPASSWORD.value = '';
+        document.PWChange.CONFIRMATION.value = '';
+    }
+}
+
+// Function for Validating Forms
+function CheckForm(form)
+{
+	if ($$smauthreason$$ == 1 || $$smauthreason$$ == 18 || $$smauthreason$$ == 20 || $$smauthreason$$ == 21 || $$smauthreason$$ == 22 || $$smauthreason$$ == 31 || $$smauthreason$$ == 34)
+	{
+		if ( form.PASSWORD.value == "" ){
+			alert( "Please enter your current Password." )
+			form.PASSWORD.focus()
+			return false
+		}
+		else if ( form.NEWPASSWORD.value == "" ){
+			alert( "Please enter a new Password." )
+			form.NEWPASSWORD.focus()
+			return false
+		}
+		else if ( form.CONFIRMATION.value == "" ){
+			alert( "Please confirm your new Password." )
+			form.CONFIRMATION.focus()
+			return false
+		}
+		else if ( form.NEWPASSWORD.value != form.CONFIRMATION.value ){
+			alert( "Please match your New Password and Confirmation." )
+			form.NEWPASSWORD.focus()
+			return false
+		}
+		else if ( form.PASSWORD.value == form.NEWPASSWORD.value ){
+			alert( "Please make your New Password different from your Old Password." )
+			form.NEWPASSWORD.focus()
+			return false
+		}
+		else {
+			form.submit()
+			return	true
+		}
+	}
+	else if ($$smauthreason$$ == 0 || $$smauthreason$$ == 4 || $$smauthreason$$ == 5 || $$smauthreason$$ == 28 || $$smauthreason$$ == 30)
+	{
+		if ( form.username.value == "" ){
+				alert( "Please enter your username." )
+				form.username.focus()
+				return false
+		}
+		else if ( form.PASSWORD.value == "" ){
+				alert( "Please enter your current Password." )
+				form.PASSWORD.focus()
+				return false
+		}
+		else {
+				form.submit()
+				return	true
+		}
+
+	}
+	else if ($$smauthreason$$ == 29)
+	{
+		if ( form.username.value == "" ){
+				alert( "Please enter your username." )
+				form.username.focus()
+				return false
+		}
+		else if ( form.PASSWORD.value == "" ){
+				alert( "Please enter your PIN followed by your new Tokencode." )
+				form.PASSWORD.focus()
+				return false
+		}
+		else if ( form.SELECT.checked ){
+				form.NEWPASSWORD.value = "SYSTEM"
+				form.submit()
+				return	true
+		}
+		else {
+				form.NEWPASSWORD.value = "NONSYSTEM"
+				form.submit()
+				return	true
+		}
+	}
+
+}
+
+function submitform ()
+{
+	if ($$smauthreason$$ == 18){
+		document.forms['PWChange'].elements['smauthreason'].value = 23
+		document.PWChange.submit();
+	}
+	else if ($$smauthreason$$ == 23 || $$smauthreason$$ == 32){
+		document.PWChange.submit()
+	}
+}
+
+function clearSubmit ()
+{
+	document.PWChange.PASSWORD.value = '';
+	document.PWChange.NEWPASSWORD.value = '';
+	document.PWChange.CONFIRMATION.value = '';
+	submitform();
+}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY bgcolor='#ffffff' text='#000000' onLoad = 'resetCredFields();'>
+
+<table width="100%">
+  <tr>
+    <td>&nbsp; </td>
+<IMG alt="Logo" src="/siteminderagent/dmspages/CATechnologies_logo.png" height="44">
+  </tr>
+</table>
+
+<hr NOSHADE>
+<!-- Spacing table -->
+<div align="center"><center>
+
+<table width="100%" bgcolor="#FFFFFF" height="20">
+  <tr>
+    <td></td>
+  </tr>
+</table>
+</center></div>
+
+<form name='PWChange' method='POST'>
+
+<div align="center"><center><table WIDTH="50%" HEIGHT="300" BGCOLOR="#FFEFD5">
+    
+        <TR> 
+            <TD>
+                <table WIDTH="100%" HEIGHT="300" BORDER="0" CELLSPACING="10" CELLPADDING="2" BGCOLOR="#FFEFD5">
+                   <TR ALIGN="CENTER" VALIGN="TOP">
+                    <TD ALIGN="TOP" VALIGN="CENTER" WIDTH="100%" height="5"></TD>
+                    </TR>
+                    
+                    <TR>
+                       <TH ALIGN="LEFT" VALIGN="CENTER" COLSPAN="6" NOWRAP WIDTH="100%" HEIGHT="50" BGCOLOR="#FFDAB9">   
+                       <FONT SIZE="+1" FACE="Arial,Helvetica"><B>
+                       
+                        <SCRIPT language='JavaScript'>
+                       	if ($$smauthreason$$ == 0 || $$smauthreason$$ == 4 || $$smauthreason$$ == 5)
+                            document.write("Login Request");                       	
+                        else if ($$smauthreason$$ == 7  || $$smauthreason$$ == 21 || $$smauthreason$$ == 24 || $$smauthreason$$ == 25)
+                            document.write("Account Information");
+                        else if ($$smauthreason$$ == 18 || $$smauthreason$$ == 19 || $$smauthreason$$ == 20 || $$smauthreason$$ == 22 || $$smauthreason$$ == 34)	                       
+                            document.write("Password Change Request");
+     			else if ($$smauthreason$$ == 1)
+			    document.write("Please Change Your Password");
+			else if ($$smauthreason$$ == 23)
+			    document.write("Password Change Information");
+			else if ($$smauthreason$$ == 28)
+			    document.write("Next Tokencode Request");			
+			else if ($$smauthreason$$ == 29)
+			    document.write("New PIN Selection");			
+			else if ($$smauthreason$$ == 30 || $$smauthreason$$ == 31 || $$smauthreason$$ == 32 )
+			    document.write("New PIN Assignment");
+			else
+			    document.write("Diagnostic Information");			
+			
+                        </SCRIPT>
+                        
+                        </FONT></B>
+                       </TH>    
+                      </TR>
+                        
+
+<SCRIPT language='JavaScript'>
+    //Auth Reason 0 - Reason none
+    //Auth Reason 4 - Session Expired
+    //Auth Reason 5 - AuthLevelTooLow
+    // Auth Reason 30 - Sm_Api_Reason_New_PIN_Sys_Tokencode 
+    if ($$smauthreason$$ == 0 || $$smauthreason$$ == 4 || $$smauthreason$$ == 5 || $$smauthreason$$ == 30)
+      {
+        document.write("<TR>");
+	document.write("    <TD width='5' HEIGHT='25'>");
+	document.write("    </TD>");
+	document.write("<TD bgColor='#ffefd5' colSpan='2' height='25' noWrap width='100%'>");
+      if ($$smauthreason$$ == 0)
+      	{
+	document.write("<font face='Arial, Helvetica'>Please enter your username and passcode.</font>");
+	}
+      else if ($$smauthreason$$ == 4)
+      	{
+	document.write("<font face='Arial, Helvetica'>Your session has expired. Please enter your username and passcode.</font>");
+	}
+	else if ($$smauthreason$$ == 5)
+      	{
+	document.write("<font face='Arial, Helvetica'>A higher Authorization Level is needed. Please enter your username and passcode.</font>");
+	}
+	else if ($$smauthreason$$ == 30)
+      	{
+	document.write("<font face='Arial, Helvetica'>To continue a new System-generated PIN is required.");
+	document.write("<p>Wait for the tokencode to change, then enter a PASSCODE <p> consisting of your current PIN followed by the tokencode. </font>");
+	}
+	document.write("    </TD>");
+	document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p><div align='center'>UserName</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='text' name='username' size='30' tabindex=1 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p><div align='center'>Passcode</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='PASSWORD' size='30' tabindex=2 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+
+      } //Auth Reason - 0,4,5 and 30
+    
+    //Auth Reason 7 - Account disabled
+    else if ($$smauthreason$$ == 7) 
+      {
+        document.write("<TR>");
+        document.write("<TD NOWRAP WIDTH='100%' BGCOLOR='#FFEFD5' height='26'>");
+    	document.write("<font face='Arial, Helvetica'><B>$$username$$</B> you cannot access your account at this time.<p>Please contact your Security Administrator or Help Desk.</font>");
+    	document.write("    </TD>");
+    	document.write("</TR>");
+      } //Auth Reason - 7
+
+      //Auth Reason = 18 - Password change option
+      else if ($$smauthreason$$ == 18)
+      {
+      
+	 if ("$$username$$" == "")
+	 {
+        document.write("<TR>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+      	document.write("    <TD NOWRAP WIDTH='100%' BGCOLOR='#FFEFD5' colspan='4' height='25'>");
+      	document.write("        <FONT face='Arial,Helvetica'> <p> $$SMPWUSRMSG$$ <p>Please change your current password before continuing.</FONT>");
+      	document.write("    </TD>");
+      	document.write("</TR>");
+	document.write("<TR>");
+     	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    <BR>");
+       	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p>UserName</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='text' name='username' size='30' tabindex=1 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        }
+        else 
+        {
+        document.write("<TR>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+      	document.write("    <TD NOWRAP WIDTH='100%' BGCOLOR='#FFEFD5' colspan='4' height='25'>");
+      	document.write("        <FONT face='Arial,Helvetica'><B>$$username$$</B> <p> $$SMPWUSRMSG$$ <p>Please change your current password before continuing.</FONT>");
+      	document.write("    </TD>");
+      	document.write("</TR>");
+      	}
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p>Old Password</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='PASSWORD' size='30' tabindex=2 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p>New Password</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5' valign='middle' nowrap>");
+        document.write("        <INPUT type='password' name='NEWPASSWORD' size='30' tabindex=3 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p>Confirm New Password</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5' nowrap>");
+        document.write("        <INPUT type='password' name='CONFIRMATION' size='30' tabindex=4 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+     } //Auth Reason = 18
+
+    //Auth Reason 19 - Account disabled due to inactivity      
+    else if ($$smauthreason$$ == 19)
+      {
+        document.write("<TR>");
+    	document.write("<TD NOWRAP WIDTH='100%' BGCOLOR='#FFEFD5' height='26'>");
+    	document.write("<font face='Arial, Helvetica'><B>$$username$$</B> you cannot access your account because your password has expired.<p>Please contact your Security Administrator or Help Desk.</font>");
+    	document.write("    </TD>");
+    	document.write("</TR>");
+      } //Auth Reason - 19
+
+// Auth Reason 1 - Password must change
+// Auth Reason 20 - Password change immediately
+// Auth Reason 21 - Password change failed
+// Auth Reason 22 - Bad Password
+    else if ($$smauthreason$$ == 1 || $$smauthreason$$ == 20 || $$smauthreason$$ == 21 || $$smauthreason$$ == 22)
+    {
+        // password must change
+    	document.write("<TR>");
+	document.write("<TD VALIGN='middle' ALIGN='CENTER' HEIGHT='5'></TD>");
+	document.write("</TR>");
+        if ("$$username$$" == "")
+        {
+            	document.write("<TR>");
+	        document.write("<TD width='5' HEIGHT='25'>");
+	        document.write("</TD>");
+                document.write("<TD NOWRAP WIDTH='100%' BGCOLOR='#FFEFD5' colspan='2' height='25'>");
+	        document.write(" <font face='Arial, Helvetica'>");
+       
+        	if ($$smauthreason$$ == 1 || $$smauthreason$$ == 20)
+        	{
+        	document.write(" please change your current password before continuing.");
+        	}
+        	else if ($$smauthreason$$ == 21)
+		{
+		document.write("your password change request was not processed correctly. <p> Please try again.");
+        	}
+        	else if ($$smauthreason$$ == 22)
+		{
+		document.write("your password change was not accepted. <p> $$SMPWUSRMSG$$ <p> Please try again. ");
+        	}
+                document.write("</font>");
+	        document.write("</TD>");
+	        document.write("</TR>");
+	        document.write("<TR>");
+	    	document.write("<TD WIDTH='5' HEIGHT='30'>");
+	    	document.write("</TD>");
+	        document.write("<TD ALIGN='CENTER' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+	        document.write("<FONT face='Arial,Helvetica'><p>UserName</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+	        document.write("</TD>");
+	        document.write("<TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+	        document.write("<INPUT type='text' name='username' size='30' tabindex=1 onkeydown='searchKeyPress(event);'>");
+	        document.write("</TD>");
+	        document.write("</TR>");
+        }
+        else
+        {
+            	document.write("<TR>");
+	        document.write("<TD width='5' HEIGHT='25'>");
+	        document.write("</TD>");
+                document.write("<TD NOWRAP WIDTH='100%' BGCOLOR='#FFEFD5' colspan='2' height='25'>");
+	        document.write(" <font face='Arial, Helvetica'>");
+
+        	if ($$smauthreason$$ == 1 || $$smauthreason$$ == 20)
+        	{
+        	document.write("<B>$$username$$ </B> please change your current password before continuing.");
+        	}
+        	else if ($$smauthreason$$ == 21)
+		{
+		document.write("<B>$$username$$ </B> your password change request was not processed correctly. <p> Please try again.");
+        	}
+        	else if ($$smauthreason$$ == 22)
+		{
+		document.write("<B>$$username$$ </B> your password change was not accepted. <p> $$SMPWUSRMSG$$ <p> Please try again. ");
+        	}
+                document.write("</font>");
+	        document.write("</TD>");
+	        document.write("</TR>");
+        }
+        document.write("<TR>");
+    	document.write("    <TD WIDTH='5' HEIGHT='30'>");
+    	document.write("    </TD>");
+        document.write("    <TD ALIGN='CENTER' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p>Old Password</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='PASSWORD' size='30' tabindex=2 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+    	document.write("    <TD WIDTH='5' HEIGHT='30'>");
+    	document.write("    </TD>");
+        document.write("    <TD ALIGN='CENTER' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p>New Password</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5' valign='middle' nowrap>");
+        document.write("        <INPUT type='password' name='NEWPASSWORD' size='30' tabindex=3 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+    	document.write("<TR>");
+    	document.write("    <TD WIDTH='5' HEIGHT='30'>");
+    	document.write("    </TD>");
+        document.write("    <TD ALIGN='CENTER' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p>Confirm New Password</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5' nowrap>");
+        document.write("        <INPUT type='password' name='CONFIRMATION' size='30' tabindex=4 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+    } // Auth Reason 1, 20, 21 & 22
+    
+     //Auth Reason = 23 - Password Change Accepted
+    else if ($$smauthreason$$ == 23)
+    {
+         document.write("   <tr>");
+         document.write("<td valign='middle' align='center' height='5'></td>");
+         document.write("</tr>");
+         document.write("   <tr>");
+         document.write("<td NOWRAP align='left' WIDTH='100%' BGCOLOR='#FFEFD5' height='26'><font face='Arial, Helvetica'>");
+         document.write("<b>$$username$$</b> your new password has been set. <p> Use this new password the next time you log into your account.</font></td> ");
+         document.write("   </tr>");
+         document.write("   <tr>");
+         document.write("<td width='50%' height='25' align='center' valign='middle' nowrap>");
+         document.write("<input type='button' id='Enter' name='ContinueButton' value='CONTINUE' tabindex=6 onClick='submitform();''>");
+         document.write("</td>");
+         document.write("   </tr>");
+      
+     }  //Auth Reason =23    
+    //Auth Reason 24 - Account disabled due to excess Login
+    else if ($$smauthreason$$ == 24)
+      {
+        document.write("<TR>");
+    	document.write("<TD NOWRAP WIDTH='100%' BGCOLOR='#FFEFD5' height='26'>");
+    	document.write("<font face='Arial, Helvetica'><B>$$username$$</B> you cannot access your account because you have exceeded the limit of login attempts. <p>Please contact your Security Administrator or Help Desk.<font>");
+    	document.write("    </TD>");
+    	document.write("</TR>");
+      } //Auth Reason - 24
+    //Auth Reason 25 - account has been disabled due to inactivity       
+    else if ($$smauthreason$$ == 25)
+      {
+        document.write("<TR>");
+        document.write("<TD NOWRAP WIDTH='100%' BGCOLOR='#FFEFD5' height='26'>");
+    	document.write("<font face='Arial, Helvetica'><B>$$username$$</B> your account has been disabled due to inactivity. <p> Please contact your Security Administrator or Help Desk.</font>");
+    	document.write("    </TD>");
+    	document.write("</TR>");
+      } //Auth Reason - 25
+
+//Auth Reason 28 - Sm_Api_Reason_Next_Tokencode
+    else if ($$smauthreason$$ == 28)
+      {
+        document.write("<TR>");
+	document.write("    <TD width='5' HEIGHT='25'>");
+	document.write("    </TD>");
+	document.write("<TD bgColor='#ffefd5' colSpan='2' height='25' noWrap width='100%'>");
+	document.write("<font face='Arial, Helvetica'>Wait for the Tokencode to change, then enter your PIN followed by the tokencode");
+	document.write("<p>Finally, wait for the tokencode to change again, then enter only the tokencode.</font>");
+	document.write("    </TD>");
+	document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p><div align='right'>UserName</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='text' name='username' size='30' tabindex=1 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p><div align='right'>Passcode</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='PASSWORD' size='30' tabindex=2 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p><div align='right'>Next Tokencode</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='NEWPASSWORD' size='30' tabindex=3 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+
+      } //Auth Reason - 28
+
+//Auth Reason 29 - Sm_Api_Reason_New_PIN_Select
+    else if ($$smauthreason$$ == 29)
+      {
+        document.write("<TR>");
+	document.write("    <TD width='5' HEIGHT='25'>");
+	document.write("    </TD>");
+	document.write("<TD bgColor='#ffefd5' colSpan='2' height='25' noWrap width='100%'>");
+	document.write("<font face='Arial, Helvetica'>To continue you must register a new PIN.");
+	document.write("<p>Wait for the tokencode to change then enter a Passcode consisting of your current PIN <br> plus the new tokencode.");
+	document.write("<p>If you want the System to automatically assign a PIN select the System PIN Checkbox. </font>");
+	document.write("<font face='Arial, Helvetica'><p>Otherwise, you will be asked to create your own within standard guidelines. </font>");
+	document.write("    </TD>");
+	document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p><div align='right'>UserName</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup>&nbsp;&nbsp;</font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='text' name='username' size='30' tabindex=1 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p><div align='right'>Passcode</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup>&nbsp;&nbsp;</font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='PASSWORD' size='30' tabindex=2 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("<FONT face='Arial,Helvetica'><div align='right'><p>System PIN Request</FONT>");
+        document.write("    </TD>");
+        document.write("<TD ALIGN='left' BGCOLOR='#ffefd5' HEIGHT='25' WIDTH='50%'>");
+        document.write("<input type='checkbox' name='SELECT' size='30' tabindex=5 style='MARGIN-LEFT: 1px' value='1' checked></TD>");
+        document.write("</TR>");
+
+      } //Auth Reason - 29
+      
+      //Auth Reason = 31 - Sm_Api_Reason_New_User_PIN_Tokencode
+    else if ($$smauthreason$$ == 31)
+      {
+        document.write("<TR>");
+	document.write("    <TD width='5' HEIGHT='25'>");
+	document.write("    </TD>");
+	document.write("<TD bgColor='#ffefd5' colSpan='2' height='25' noWrap width='100%'>");
+	document.write("<font face='Arial, Helvetica'>$$SMPWUSRMSG$$ <p>Wait for the tokencode to change, then enter your current PIN followed by the tokencode.");
+	document.write("<p>Then enter your new PIN and confirm it.</font>");
+	document.write("    </TD>");
+	document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><div align='right'><p>UserName</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='text' name='username' size='30' tabindex=1 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><div align='right'><p>Passcode</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='PASSWORD' size='30' tabindex=2 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><div align='right'><p>New PIN</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='NEWPASSWORD' size='30' tabindex=3 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><div align='right'><p>Confirm New PIN</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='CONFIRMATION' size='30' tabindex=4 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+
+      } //Auth Reason - 31
+
+ //Auth Reason - 32 - Sm_Api_Reason_New_PIN_Accepted
+    else if ($$smauthreason$$ == 32)
+    {
+         document.write("   <tr>");
+         document.write("<td valign='middle' align='center' height='5'></td>");
+         document.write("</tr>");
+         document.write("   <tr>");
+         document.write("<td NOWRAP  WIDTH='100%' BGCOLOR='#FFEFD5' height='26'><font face='Arial, Helvetica'>");
+         document.write("Your PIN has been accepted.<b> $$SMPWUSRMSG$$</b> <p> Use the new PIN when you continue and when you login.</font></td>");
+         document.write("   </tr>");
+         document.write("   <tr>");
+         document.write("<td width='50%' height='25' align='center' valign='middle' nowrap>");
+         document.write("<input type='button' id='Enter' name='ContinueButton' value='CONTINUE' tabindex=6 onClick='submitform();''>");
+         document.write("</td>");
+         document.write("<td WIDTH='5' HEIGHT='25'></td>");
+         document.write("   </tr>");
+     }  //Auth Reason =32
+
+//Auth Reason = 34 - User self password change
+    else if ($$smauthreason$$ == 34)
+      {
+        document.write("<TR>");
+	document.write("    <TD width='5' HEIGHT='25'>");
+	document.write("    </TD>");
+	document.write("<TD bgColor='#ffefd5' colSpan='2' height='25' noWrap width='100%'>");
+	document.write("<font face='Arial, Helvetica'>Please enter name and current password then propose new password and confirm before continuing.</font>");
+	document.write("    </TD>");
+	document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p>UserName</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='text' name='username' size='30' tabindex=1 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p>Old Password</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='PASSWORD' size='30' tabindex=2 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p>New Password</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='NEWPASSWORD' size='30' tabindex=3 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+        document.write("<TR>");
+      	document.write("    <TD WIDTH='5' HEIGHT='25'>");
+      	document.write("    <BR>");
+      	document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <FONT face='Arial,Helvetica'><p>Confirm New Password</FONT><font size='-1' color='#FF0000' face='arial,helvetica'><sup>*</sup></font>");
+        document.write("    </TD>");
+        document.write("    <TD ALIGN='LEFT' WIDTH='50%' HEIGHT='25' BGCOLOR='#FFEFD5'>");
+        document.write("        <INPUT type='password' name='CONFIRMATION' size='30' tabindex=4 onkeydown='searchKeyPress(event);'>");
+        document.write("    </TD>");
+        document.write("    <TD WIDTH='5' HEIGHT='25'>");
+        document.write("    </TD>");
+        document.write("</TR>");
+
+      } //Auth Reason - 34
+     else
+     {
+
+        document.write("<TR>");
+	document.write("    <TD width='5' HEIGHT='25'>");
+	document.write("    </TD>");
+        document.write(" <td NOWRAP WIDTH='100%' BGCOLOR='#FFEFD5' height='26'><font face='Arial, Helvetica'>Security Protection Fault:<B> Condition not handled for SMAUTHREASON = $$smauthreason$$</B></font></td>");
+	document.write("</TR>");
+        document.write("<TR>");
+	document.write("    <TD width='5' HEIGHT='25'>");
+	document.write("    </TD>");
+        document.write("<td NOWRAP WIDTH='100%' BGCOLOR='#FFEFD5' height='26'><font face='Arial, Helvetica'>Please contact your Security Administrator or Help Desk.</font></td>");
+	document.write("</TR>");
+    }
+
+</SCRIPT>
+                    <TR>
+                    <TD WIDTH="15" height="25"></TD>
+
+<SCRIPT language='JavaScript'>
+
+    if (("$$username$$" != "") && $$smauthreason$$ != 0 && $$smauthreason$$ != 4 && $$smauthreason$$ != 5 && $$smauthreason$$ != 28 && $$smauthreason$$ != 29 && $$smauthreason$$ != 30 && $$smauthreason$$ != 34)
+    {
+        document.write("<INPUT type='hidden' name='USERNAME' value='$$username$$'>");
+    }
+    
+    if ("$$SMENC$$" == "")
+    {
+    	document.write("<INPUT type='hidden' name='SMENC' value='UTF-8'>");
+    }
+    else
+    {
+    	document.write("<INPUT type='hidden' name='SMENC' value='$$SMENC$$'>");
+    }
+
+    if ($$smauthreason$$ == 34)
+    {   
+        document.write("<INPUT type='hidden' name='smpwselfchange' value='$$smpwselfchange$$'>");
+    }
+    
+
+</SCRIPT>
+                            
+                            <INPUT type='hidden' name='SMTOKEN' value='$$smtoken$$'>
+                            <INPUT type='hidden' name='smagentname' value='$$smagentname$$'>
+                            <INPUT type='hidden' name='smauthreason' value='$$smauthreason$$'>
+                            <INPUT type='hidden' name='postpreservationdata' value='$$postpreservationdata$$'>
+                            <INPUT type='hidden' name='target' value='$$target$$'>
+                            <INPUT type='hidden' name='smquerydata' value='$$smquerydata$$'>
+                            <SCRIPT language='JavaScript'>
+			    
+			     if ($$smauthreason$$ == 0 || $$smauthreason$$ == 1 || $$smauthreason$$ == 4 || $$smauthreason$$ == 5 || $$smauthreason$$ == 21 || $$smauthreason$$ == 28 || $$smauthreason$$ == 29 || $$smauthreason$$ == 30 || $$smauthreason$$ == 31 )
+			     {
+			     	  document.write("<td ALIGN='right' VALIGN='CENTER'  checked='false'><INPUT type='button' id='Enter' value='Enter' tabindex=7 onClick='CheckForm(this.form)'></td>");
+			          document.write("<td ALIGN='left' VALIGN='CENTER' COLSPAN='2' NOWRAP WIDTH='33%' HEIGHT='25' checked='false'><input type='reset' value='Clear this form' tabindex=8></td>");
+			     }
+			     else if ($$smauthreason$$ == 18)
+			     {
+			      	  document.write("<td ALIGN='right' VALIGN='CENTER'  checked='false'><INPUT type='button' id='Enter' value='Change Password' tabindex=7 onClick='CheckForm(this.form)'></td>");
+			     	  document.write("<td ALIGN='center' VALIGN='CENTER' COLSPAN='2' NOWRAP WIDTH='33%' HEIGHT='25' checked='false'><input type='reset' value='Clear this form' tabindex=8></td>");
+			     	  document.write("<td ALIGN='left' VALIGN='CENTER' NOWRAP WIDTH='33%' HEIGHT='25' checked='false'> <input type='button' value='Remind me later' tabindex=9 onClick='clearSubmit()'></td>");
+			     }
+			     else if ($$smauthreason$$ == 20 || $$smauthreason$$ ==22 || $$smauthreason$$ == 34)
+			     {
+			     	  document.write("<td ALIGN='right' VALIGN='CENTER' checked='false'><INPUT type='button' id='Enter' value='Change Password' tabindex=7 onClick='CheckForm(this.form)'></td>");
+			          document.write("<td ALIGN='center' VALIGN='CENTER' COLSPAN='2' NOWRAP WIDTH='33%' HEIGHT='25' checked='false'><input type='reset' value='Clear this form' tabindex=8></td>");
+			     }
+			     
+			     if ($$smauthreason$$ == 29)
+			     {
+			       document.write("<INPUT type='hidden' name='NEWPASSWORD' value='NONSYSTEM'>");
+			     }
+			     if ($$smauthreason$$ == 0 || $$smauthreason$$ ==4 || $$smauthreason$$ == 5 || $$smauthreason$$ == 20 || $$smauthreason$$ == 28 || $$smauthreason$$ == 29 || $$smauthreason$$ == 30 || $$smauthreason$$ == 31 || $$smauthreason$$ == 34)
+			     {
+        			document.write("<INPUT type='hidden' name='BUFFER' value='endl'>");
+			     }
+			       
+                            </SCRIPT>
+                        
+                    </TR>
+                    <TR>
+                        <TD colspan='4' height='10'>
+                            &nbsp;
+                        </TD>
+                    </TR>
+                </TABLE>
+            </TD>
+        </TR>
+    </TABLE>
+    </center></div>
+</FORM>
+
+<SCRIPT language='JavaScript'>
+
+    if ($$smauthreason$$ == 0 || $$smauthreason$$ == 4 || $$smauthreason$$ == 5 || $$smauthreason$$ == 30 || $$smauthreason$$ == 31 || $$smauthreason$$ == 34)
+    {
+        document.forms['PWChange'].elements['username'].focus();
+    }
+    else if (("$$username$$" != "") && ($$smauthreason$$ == 1 || $$smauthreason$$ == 18 || $$smauthreason$$ == 20 || $$smauthreason$$ == 21 || $$smauthreason$$ == 22))
+    {
+        document.forms['PWChange'].elements['PASSWORD'].focus();
+    }
+	else if($$smauthreason$$ == 32 || $$smauthreason$$ == 23 )
+	{
+        document.forms['PWChange'].elements['ContinueButton'].focus();
+    }
+	else if (("$$username$$" == "") && ($$smauthreason$$ == 1 || $$smauthreason$$ == 18 || $$smauthreason$$ == 20 || $$smauthreason$$ == 21 || $$smauthreason$$ == 22))
+	{
+		document.forms['PWChange'].elements['username'].focus();
+	}
+
+</SCRIPT>
+
+</BODY>
+
+</HTML>

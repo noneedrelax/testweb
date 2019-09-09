@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+
+.form-control,
+.form-row {
+    & + & {
+        margin-top: $std-padding4;
+    }
+
+    &.form-buttons-row {
+        margin-top: 18px;
+    }
+}
+
+.input {
+    min-width: 60px;
+    padding: $std-padding3;
+    border: 1px solid $std-table-border;
+    border-radius: $std-tab-radius;
+    background: inherit;
+    line-height: $lineHeightMinVis;
+
+    &:focus {
+        border-color: $std-table-border-selected;
+    }
+}
+
+input:not([type=checkbox]):not([type=radio]) {
+    appearance: none;
+    box-shadow: none;
+}
+
+textarea {
+    line-height: $lineHeightMinVis;
+    user-select: text;
+}
+
+.select-cont {
+    display: inline-block;
+    width: 100%;
+
+    label {
+        font-weight: normal;
+        font-size: 90%;
+    }
+}
+
+select {
+    display: block;
+    margin-top: $std-padding;
+    padding: $std-padding3 $std-padding8 $std-padding3 $std-padding3;
+    height: auto;
+    width: 100%;
+    //color: $gray-light2;
+    border-radius: $std-tab-radius;
+    background: $white url($arrow-img) no-repeat center right $std-padding3;
+    background-size: 8px;
+    border: 1px solid $std-table-border;
+    appearance: none;
+    font-size: $fontSizeSmall;
+    line-height: $lineHeightMinVis;
+
+    @media #{$device-wide} {
+        font-size: $fontSize;
+    }
+}
+
+.label {
+    display: block;
+}
+
+.label-span {
+    font-weight: normal;
+    color: $disabled;
+    font-size: 80%;
+    float: right;
+    padding-top: 3px;
+}
+
+.standalone-form {
+    margin: 20px auto;
+
+    .label {
+        margin: 0 0 8px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .input {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .form-control + &__actions {
+        margin-top: 20px;
+    }
+
+    .form-control {
+        .label-optional {
+            font-weight: normal;
+            font-size: 80%;
+        }
+    }
+
+    .standalone-form__actions {
+        margin-top: 15px;
+    }
+
+    .block-title {
+        font-weight: bold;
+        color: #888888;
+        margin-bottom: $std-padding2;
+    }
+
+    .form-block {
+        padding: $std-padding2;
+        border: 1px solid $std-table-border;
+    }
+}
+
+.compact-form {
+    max-width: 320px;
+    margin: 20px auto;
+
+    .label {
+        margin: 0 0 8px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .input {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .form-control {
+        margin-top: 5px;
+    }
+}
+
+input:invalid {
+    box-shadow: none;
+}
+
+/* Trick to overwrite autofill styles */
+@-webkit-keyframes autofill {
+    to {
+        color: inherit;
+        background: transparent;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+/* End of trick */

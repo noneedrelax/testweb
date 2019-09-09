@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>testweb</artifactId>
+	<packaging>war</packaging>
+	<name>TestWeb Maven Webapp</name>
+	<groupId>com.idfconnect.ssorest.test</groupId>
+	<version>3.0.12-SNAPSHOT</version>
+
+	<parent>
+		<groupId>com.idfconnect.ssorest</groupId>
+		<artifactId>base</artifactId>
+		<version>3.0.11</version>
+	</parent>
+
+	<scm>
+		<connection>scm:svn:https://idfconnect.svn.cloudforge.com/ssoresttest/branches/3.0.x</connection>
+		<developerConnection>scm:svn:https://idfconnect.svn.cloudforge.com/ssoresttest/branches/3.0.x</developerConnection>
+		<url>https://idfconnect.svn.cloudforge.com/ssoresttest/branches/3.0.x</url>
+	</scm>
+
+	<properties>
+		<ssorest-filter.version>3.0.25-SNAPSHOT</ssorest-filter.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<!-- Explicitly build two versions, one with no filter -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+				<executions>
+					<!-- Default (filter) version -->
+					<execution>
+						<id>withfilter</id>
+						<goals>
+							<goal>war</goal>
+						</goals>
+					</execution>
+					<!-- Nofilter version excludes filter jar -->
+					<execution>
+						<id>nofilter</id>
+						<goals>
+							<goal>war</goal>
+						</goals>
+						<configuration>
+							<webappDirectory>${project.build.directory}/${project.build.finalName}-nofilter</webappDirectory>
+							<classifier>nofilter</classifier>
+							<packagingExcludes>WEB-INF/lib/ssorest-plugin-filter*.jar</packagingExcludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<finalName>testweb</finalName>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.idfconnect.ssorest.plugin</groupId>
+			<artifactId>ssorest-plugin-filter-full-slf4j</artifactId>
+			<version>${ssorest-filter.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>ssorest-plugin-filter-base</artifactId>
+					<groupId>com.idfconnect.ssorest.plugin</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.idfconnect.ssorest.plugin</groupId>
+			<artifactId>ssorest-plugin-filter-annotated</artifactId>
+			<version>${ssorest-filter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>

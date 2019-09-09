@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162.54668 139.33333" xml:space="preserve">
+  <g transform="matrix(1.3333333,0,0,-1.3333333,0,139.33333)">
+    <g transform="scale(0.1)">
+      <path style="fill:#7142a4;fill-opacity:1;fill-rule:nonzero;stroke:none" d="M 491.867,1045 388.688,855.223 H 617.105 L 752.5,607.961 651.035,435.07 754.281,248.676 H 968.734 L 1071.85,430.055 725.891,1045 H 491.867"></path>
+      <path style="fill:#242657;fill-opacity:1;fill-rule:nonzero;stroke:none" d="M 994.395,192.379 H 710.277 L 609.98,368.324 H 402.406 L 291.156,180.727 398.363,1.69922 1103.93,0.449219 1219.07,204.188 1104.57,387.371 994.395,192.379"></path>
+      <path style="fill:#5c5cb4;fill-opacity:1;fill-rule:nonzero;stroke:none" d="M 368.605,803.008 0,205.324 113.449,0 h 215.024 l -110.7,201.676 153.098,233.078 H 568.434 L 680.828,616.75 578.859,803.031 368.605,803.008"></path>
+    </g>
+  </g>
+</svg>

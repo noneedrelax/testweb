@@ -1,0 +1,8 @@
+<Context path="/testweb" docBase="/app/testweb.war" unpackWAR="false">
+    <Parameter name="com.idfconnect.ssorest.plugin.filter.SSORestServletFilterPluginAnnotated.useFileConfigProvider" value="true" override="false"/>
+    <Parameter name="com.idfconnect.ssorest.plugin.filter.SSORestServletFilterPluginAnnotated.configFileName" value="/app/filter.properties" override="false"/>
+    <Parameter name="userIdHeaderName" value="SM_USER" override="false"/>
+    <Parameter name="legacyHeaderName" value="true" override="false"/>
+    <Parameter name="sessionIdHeaderName" value="SM_SERVERSESSIONID" override="false"/>
+    <Parameter name="ssorest-base" value="/ssorest3" override="false"/>
+</Context>
