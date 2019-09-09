@@ -1,4 +1,4 @@
 language: java
-script:
+install: mvn -Drepo.username=${REPO_USERNAME} -Drepo.password=${REPO_PASSWORD} -s conf/maven_settings_idfc.xml install
+script: mvn -Drepo.username=${REPO_USERNAME} -Drepo.password=${REPO_PASSWORD} -s conf/maven_settings_idfc.xml test
  # decrype the account key file
- - mvn -Drepo.username=${REPO_USERNAME} -Drepo.password=${REPO_PASSWORD} -s conf/maven_settings_idfc.xml package 
