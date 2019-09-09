@@ -1,4 +1,30 @@
+sudo: required
 language: java
+services:
+ - docker
+env:
+ global:
+  - SHA=$(git rev-parse HEAD)
+  # prevent the warning prompt from gcloud cli
+  - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+before_install:
+ # decrype the account key file
+ - openssl aes-256-cbc -K $encrypted_33c2a12ca10a_key -iv $encrypted_33c2a12ca10a_iv -in service-account.json.enc -out ./service-account.json -d
+ - curl https://sdk.cloud.google.com | bash > /dev/null;
+ - source $HOME/google-cloud-sdk/path.bash.inc
+ - gcloud components update kubectl
+ # this is to add the service account, like how we did the IAM port in AWS. 
+ - gcloud auth activate-service-account --key-file service-account.json
+ # tell gcloud which project we want to work on. 
+ - gcloud config set project multi-k8s-252017
+ - gcloud config set compute/zone us-central1-a
+ # load the gcloud credentail to kubectl 
+ - gcloud container clusters get-credentials testweb
+ - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+ - export PATH=$PATH:$HOME/.local/bin
 install: mvn -Drepo.username=${REPO_USERNAME} -Drepo.password=${REPO_PASSWORD} -Dfindbugs-maven-plugin.version=3.0.5 -s conf/maven_settings_idfc.xml install
 script: mvn -Drepo.username=${REPO_USERNAME} -Drepo.password=${REPO_PASSWORD} -Dfindbugs-maven-plugin.version=3.0.5  -s conf/maven_settings_idfc.xml test
- # decrype the account key file
+deploy:
+ # use the custom script to deploy
+ provider: script
+ script: ./docker_push.sh && ./deploy_k8s.sh
