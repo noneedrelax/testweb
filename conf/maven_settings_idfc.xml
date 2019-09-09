@@ -1,0 +1,101 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+	
+
+	<profiles>
+		<!-- IDFC default profile -->
+		<profile>
+			<id>IDFC</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<repositories>
+				<repository>
+					<id>idfcmaven</id>
+					<name>IDFC Release Repository</name>
+					<!-- url>https://mars.idfconnect.com/artifactory/repo</url -->
+					<url>https://idfconnect.jfrog.io/idfconnect/repo</url>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>idfcmaven</id>
+					<name>IDFC Release Repository</name>
+					<!-- url>https://mars.idfconnect.com/artifactory/repo</url -->
+					<url>https://idfconnect.jfrog.io/idfconnect/repo</url>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+
+		<!-- IDFC profile with IDFC maven release repository -->
+		<profile>
+			<id>IDFC-Releases</id>
+			<repositories>
+				<repository>
+					<id>idfcmaven</id>
+					<name>IDFC Release Repository</name>
+					<!-- url>https://mars.idfconnect.com/artifactory/libs-release-local</url -->
+					<url>https://idfconnect.jfrog.io/idfconnect/libs-release-local</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+				</repository>
+			</repositories>
+		</profile>
+
+		<!-- IDFC profile with IDFC maven snapshot repository -->
+		<profile>
+			<id>IDFC-Snapshots</id>
+			<repositories>
+				<repository>
+					<id>idfcmaven</id>
+					<name>IDFC Snapshot Repository</name>
+					<!-- url>https://mars.idfconnect.com/artifactory/libs-snapshot-local</url -->
+					<url>https://idfconnect.jfrog.io/idfconnect/libs-snapshot-local</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+				</repository>
+			</repositories>
+		</profile>
+
+	</profiles>
+
+	<servers>
+
+
+		<!-- IDFC -->
+		<server>
+			<id>mars.idfconnect.com</id>
+			<username>${repo.username}</username>
+			<password>${repo.password}</password>
+			
+		</server>
+
+
+
+		<!-- IDFC maven -->
+		
+		<server>
+			<id>idfcmaven</id>
+			<username>${repo.username}</username>
+			<password>${repo.password}</password>
+
+		</server>
+
+
+	</servers>
+	
+
+  
+  
+</settings>
