@@ -2,95 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05bc4612-0acd-4997-b26a-d69586218b18" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3_IDFC_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_idfconnect_ssorest_plugin_ssorest_plugin_filter_annotated_3_0_25_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_idfconnect_ssorest_plugin_ssorest_plugin_filter_full_slf4j_3_0_25_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jstl_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_ext_1_7_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/testweb.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile-no-filter.dev" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile.dev" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conf/filter.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conf/testweb.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontend/css/sass/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontend/css/sass/base/base.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontend/css/sass/base/buttons.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontend/css/sass/base/forms.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontend/css/sass/base/normalize.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontend/css/sass/main.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontend/css/sass/styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontend/images/idfc.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontend/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/samples/testweb.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/ssorest.jks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dist/images/idfc.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dist/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dist/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/echoheaders.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/forgotpw.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/idle.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/Account.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/Devices.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/Google_Engine.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/IIS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/JAVA.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/SITEMINDER.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/Slider.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/logo_header.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/logo_menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/websphere.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login/login-nd.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login/login-nd2.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login/login.fcc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login/login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login/logincn.fcc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login/smpwservices.fcc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login/smpwservices.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login/totp.fcc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login/totp.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/logout.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/max.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parts/basicInfo.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parts/footer.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parts/header.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parts/initParameters.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parts/requestAttributes.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parts/requestCookies.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parts/requestHeaders.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parts/requestJndiResources.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parts/requestParameters.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parts/sessionAttributes.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/parts/systemProps.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/posttest.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/style/back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/style/idfclogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/style/info-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/style/normalize.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/style/st.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/style/st.dist.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/style/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -107,6 +19,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Dockerfile">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -127,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/filter.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="88">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="16" />
+              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -227,6 +148,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,27 +157,10 @@
               <item name="testweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="testweb" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="testweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testweb" type="462c0819:PsiDirectoryNode" />
-              <item name="conf" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testweb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testweb" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -318,17 +224,18 @@
       <workItem from="1567926159590" duration="1747000" />
       <workItem from="1567930280351" duration="1774000" />
       <workItem from="1567932095330" duration="1528000" />
+      <workItem from="1568040647030" duration="247000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6302000" />
+    <option name="totallyTimeSpent" value="6549000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.25799572" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.26066098" />
       <window_info id="Structure" order="1" sideWeight="0.50161815" side_tool="true" weight="0.2553305" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -342,8 +249,8 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" weight="0.329718" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4989339" visible="true" weight="0.329718" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49840087" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50159913" side_tool="true" visible="true" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -355,13 +262,18 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile-no-filter-no-war.dev" />
     <entry file="file://$PROJECT_DIR$/Dockerfile.dev">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile-no-filter.dev">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
         </state>
       </provider>
     </entry>
@@ -399,24 +311,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile-no-filter-no-war.dev">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile-no-filter.dev">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/conf/filter.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="16" />
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
