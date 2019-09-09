@@ -19,7 +19,7 @@ before_install:
  - gcloud config set project multi-k8s-252017
  - gcloud config set compute/zone us-central1-a
  # load the gcloud credentail to kubectl 
- - gcloud container clusters get-credentials testweb
+ - gcloud container clusters get-credentials testweb-cluster
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
  - export PATH=$PATH:$HOME/.local/bin
 install: mvn -Drepo.username=${REPO_USERNAME} -Drepo.password=${REPO_PASSWORD} -Dfindbugs-maven-plugin.version=3.0.5 -s conf/maven_settings_idfc.xml install
