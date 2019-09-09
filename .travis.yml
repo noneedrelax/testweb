@@ -8,6 +8,7 @@ env:
   # prevent the warning prompt from gcloud cli
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 before_install:
+ - chmod +rx ./*.sh
  # decrype the account key file
  - openssl aes-256-cbc -K $encrypted_33c2a12ca10a_key -iv $encrypted_33c2a12ca10a_iv -in service-account.json.enc -out ./service-account.json -d
  - curl https://sdk.cloud.google.com | bash > /dev/null;
