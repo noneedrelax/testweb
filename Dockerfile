@@ -8,3 +8,4 @@ WORKDIR '/app'
 COPY target/testweb.war ./
 COPY conf/testweb.xml /usr/local/tomcat/conf/Catalina/localhost/testweb.xml
 COPY conf/filter.properties ./
+COPY conf/context.xml /usr/local/tomcat/conf/
