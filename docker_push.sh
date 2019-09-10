@@ -1,6 +1,6 @@
 echo "name space is ${myNs}, SHA is  ${SHA}"
-pwd
-ls -l
+mkdir -p ./target/
+cp $HOME/upload/testweb.war ./target/
 docker build -t ${myNs}/testweb:latest -t ${myNs}/multi-client:${SHA} ./
  
 # update latest version

@@ -12,6 +12,7 @@ cache:
   - $HOME/.m2
      
 before_install:
+ - mkdir -p $HOME/upload/
  # decrype the account key file
  - openssl aes-256-cbc -K $encrypted_33c2a12ca10a_key -iv $encrypted_33c2a12ca10a_iv -in service-account.json.enc -out ./service-account.json -d
  - curl https://sdk.cloud.google.com | bash > /dev/null;
@@ -28,8 +29,8 @@ before_install:
  - export PATH=$PATH:$HOME/.local/bin
 install: 
  - mvn -Drepo.username=${REPO_USERNAME} -Drepo.password=${REPO_PASSWORD} -Dfindbugs-maven-plugin.version=3.0.5 -s conf/maven_settings_idfc.xml install
- - pwd
- - ls -lR ./
+ # this step is for docker image build
+ - cp target/testweb.war $HOME/upload/
 script: mvn -Drepo.username=${REPO_USERNAME} -Drepo.password=${REPO_PASSWORD} -Dfindbugs-maven-plugin.version=3.0.5  -s conf/maven_settings_idfc.xml test
 deploy:
  # use the custom script to deploy
