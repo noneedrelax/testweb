@@ -24,7 +24,7 @@ before_install:
  - gcloud config set project multi-k8s-252017
  - gcloud config set compute/zone us-central1-a
  # load the gcloud credentail to kubectl 
- - gcloud container clusters get-credentials testweb-cluster
+ - gcloud container clusters get-credentials multi-cluster
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
  - export PATH=$PATH:$HOME/.local/bin
 install: 
