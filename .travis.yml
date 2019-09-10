@@ -22,7 +22,7 @@ before_install:
  - gcloud auth activate-service-account --key-file service-account.json
  # tell gcloud which project we want to work on. 
  - gcloud config set project multi-k8s-252017
- - gcloud config set compute/zone us-central1-a
+ - gcloud config set compute/zone asia-southeast1-a
  # load the gcloud credentail to kubectl 
  - gcloud container clusters get-credentials multi-cluster
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
@@ -35,4 +35,4 @@ script: mvn -Drepo.username=${REPO_USERNAME} -Drepo.password=${REPO_PASSWORD} -D
 deploy:
  # use the custom script to deploy
  provider: script
- script: pwd && ls -lR ./ && ./docker_push.sh && ./deploy_k8s.sh
+ script: ./docker_push.sh && ./deploy_k8s.sh
